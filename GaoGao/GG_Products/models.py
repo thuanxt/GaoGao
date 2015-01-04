@@ -2,12 +2,8 @@ from django.db import models
 
 # Category
 class Category(models.Model):
+    cate_parent_id = models.ForeignKey('self') # ID of the Parent Category, 0 is no parent
     cate_name = models.CharField(max_length=255) # Category name
-
-# Category details
-class CategoryDetail(models.Model):
-    cate_id = models.ForeignKey(Category) # Category ID
-    cate_detail_name = models.CharField(max_length=255) # Category detail name
 
 # Brand
 class Brand(models.Model):
@@ -15,7 +11,7 @@ class Brand(models.Model):
     
 # Product
 class Product(models.Model):
-    cate_detail_id = models.ForeignKey(CategoryDetail) # Category detail ID
+    cate_detail_id = models.ForeignKey(Category) # Category detail ID
     brand_id = models.ForeignKey(Brand) # Brand ID
     image_url = models.CharField(max_length=255) # Image location
     quantity = models.IntegerField(default=1) # Quantity
