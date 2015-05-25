@@ -1,6 +1,8 @@
+from django.utils.encoding import python_2_unicode_compatible
 from django.db import models
 
 # Category
+@python_2_unicode_compatible
 class Category(models.Model):
     cate_parent_id = models.ForeignKey('self', null=True, blank=True) # ID of the Parent Category, 0 is no parent
     cate_name = models.CharField(max_length=255) # Category name
@@ -10,14 +12,16 @@ class Category(models.Model):
         return self.cate_name # Return category name
 
 # Brand
+@python_2_unicode_compatible
 class Brand(models.Model):
     brand_name = models.CharField(max_length=255) # Brand name
     
     # Override __str__ method
     def __str__(self):
         return self.brand_name # Return brand name
-    
+
 # Product
+@python_2_unicode_compatible
 class Product(models.Model):
     cate_detail_id = models.ForeignKey(Category) # Category detail ID
     product_name = models.CharField(max_length=255) # Product name
@@ -33,6 +37,7 @@ class Product(models.Model):
         return self.product_name # Return product name
     
 # Location
+@python_2_unicode_compatible
 class Location(models.Model):
     loc_name = models.CharField(max_length=255) # Location name
     
@@ -41,6 +46,7 @@ class Location(models.Model):
         return self.loc_name # Return location name
     
 # Color
+@python_2_unicode_compatible
 class Color(models.Model):
     color_name = models.CharField(max_length=255) # Color of the product
     
@@ -49,6 +55,7 @@ class Color(models.Model):
         return self.color_name # Return color name
     
 # Product Detail
+@python_2_unicode_compatible
 class ProductDetail(models.Model):
     product_id = models.ForeignKey(Product) # Product ID
     color_id = models.ForeignKey(Color) # Color ID
