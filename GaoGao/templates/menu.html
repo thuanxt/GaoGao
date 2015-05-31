@@ -1,0 +1,12 @@
+<ol class="list-group">
+     {% for cat in categories %}
+     <li class='task-list-item'>
+     	 {{ cat.cate_name }}
+         {% if cat.children %}
+             {% with categories=cat.children.all %}
+                 {% include "menu.html" %}
+             {% endwith %}
+         {% endif %}
+     </li>
+     {% endfor %}
+</ol>

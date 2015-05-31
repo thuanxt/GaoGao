@@ -1,0 +1,14 @@
+<h1>Well done!!</h1>
+
+<ol class="list-group">
+ 2     {% for cat in categories %}
+ 3     <li class='task-list-item'>
+ 4         <!-- Display necessary task information/fields here -->
+ 5         {% if cat.children %}
+ 6             {% with categories=cat.children %}
+ 7                 {% include "home.html" %}
+ 8             {% endwith %}
+ 9         {% endif %}
+10     </li>
+11     {% endfor %}
+12 </ol>

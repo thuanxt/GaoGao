@@ -7,4 +7,7 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^menu/', 'GG_Products.views.menu'),
+    url(r'^home/', 'GG_Products.views.home'),
 ]
+

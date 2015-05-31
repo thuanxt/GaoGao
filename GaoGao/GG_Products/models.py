@@ -4,7 +4,7 @@ from django.db import models
 # Category
 @python_2_unicode_compatible
 class Category(models.Model):
-    cate_parent_id = models.ForeignKey('self', null=True, blank=True) # ID of the Parent Category, 0 is no parent
+    cate_parent_id = models.ForeignKey('self', null=True, blank=True, related_name='children') # ID of the Parent Category, 0 is no parent
     cate_name = models.CharField(max_length=255) # Category name
     
     # Override __str__ method
